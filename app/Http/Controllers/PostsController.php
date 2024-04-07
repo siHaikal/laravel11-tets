@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use  App\Models\Posts;
+use  App\Models\Post;
 
 
 class PostsController extends Controller
@@ -11,14 +11,14 @@ class PostsController extends Controller
     public function index() {
         return view('posts', [
             "title" => "blog",
-            "posts" => Posts::all()
+            "posts" => Post::all()
         ]);
     }
 
-    public function show($slug) {
+    public function show(Post $blog) {
         return view('post', [
-            'title' =>Posts::find($slug)['slug'],
-            'post' => Posts::find($slug)
+            'title' => 'Single post',
+            'post' => $blog
         ]);
     }
 }
